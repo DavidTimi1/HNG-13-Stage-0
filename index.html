@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card - Stage 0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        article[data-testid="test-profile-card"] {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .card-content {
+                flex-direction: row;
+                gap: 32px;
+            }
+        }
+
+        .avatar-section {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        img[data-testid="test-user-avatar"] {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        img[data-testid="test-user-avatar"]:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-section {
+            flex: 1;
+            min-width: 0;
+        }
+
+        header {
+            margin-bottom: 16px;
+        }
+
+        h1[data-testid="test-user-name"] {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+        .time-display {
+            font-size: 0.875rem;
+            color: #718096;
+            font-family: 'Courier New', monospace;
+            background: #f7fafc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        p[data-testid="test-user-bio"] {
+            color: #4a5568;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            word-wrap: break-word;
+        }
+
+        nav[data-testid="test-user-social-links"] {
+            margin-bottom: 24px;
+        }
+
+        nav h2 {
+            font-size: 1rem;
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        nav a:focus {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .lists-container {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .lists-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        section h2 {
+            font-size: 1.125rem;
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        section li {
+            padding: 10px 12px;
+            background: #f7fafc;
+            border-radius: 6px;
+            color: #4a5568;
+            border-left: 3px solid #667eea;
+            transition: all 0.2s ease;
+            word-wrap: break-word;
+        }
+
+        section[data-testid="test-user-dislikes"] li {
+            border-left-color: #fc8181;
+        }
+
+        section li:hover {
+            background: #edf2f7;
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 767px) {
+            h1[data-testid="test-user-name"] {
+                font-size: 1.5rem;
+            }
+
+            .card-content {
+                padding: 24px;
+            }
+
+            img[data-testid="test-user-avatar"] {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <article data-testid="test-profile-card">
+        <div class="card-content">
+            <aside class="avatar-section">
+                <figure>
+                    <img 
+                        data-testid="test-user-avatar" 
+                        src="https://www.davidtimi.tech/assets/profile-B-dEHddr.jpg" 
+                        alt="Profile picture of David Uwagbale"
+                    >
+                </figure>
+            </aside>
+
+            <div class="info-section">
+                <header>
+                    <h1 data-testid="test-user-name">David  Uwagbale</h1>
+                    <div class="time-display">
+                        Current time: <span data-testid="test-user-time" aria-live="polite"></span>ms
+                    </div>
+                </header>
+
+                <p data-testid="test-user-bio">
+                    Heyy! I'm David David Uwagbale popularly known as Dev_id, TimiDev, a Full-stack Developer.
+
+For over 3 years now, I have been obsessed making user-centered websites alongside dynamic and progressive web applications .
+
+I'm pursuing a Bachelor's degree in Computer Science since I kinda enjoy writing programs. I also participate in hackathons, working with small teams to bring life to great ideas.
+
+I quite like the idea of Fancy sophisticated-looking Statistics 😂
+
+My other hobbies include playing football and chess.
+                </p>
+
+                <nav data-testid="test-user-social-links" aria-label="Social media links">
+                    <h2>Connect with me</h2>
+                    <ul>
+                        <li>
+                            <a 
+                                href="https://twitter.com/davidtimi_1" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                data-testid="test-user-social-twitter"
+                                aria-label="Visit my Twitter profile"
+                            >
+                                <span aria-hidden="true">🐦</span> Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a 
+                                href="https://github.com/davidtimi1" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                data-testid="test-user-social-github"
+                                aria-label="Visit my GitHub profile"
+                            >
+                                <span aria-hidden="true">💻</span> GitHub
+                            </a>
+                        </li>
+                        <li>
+                            <a 
+                                href="https://linkedin.com/in/daviduwagbale" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                data-testid="test-user-social-linkedin"
+                                aria-label="Visit my LinkedIn profile"
+                            >
+                                <span aria-hidden="true">💼</span> LinkedIn
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="lists-container">
+                    <section data-testid="test-user-hobbies">
+                        <h2>Hobbies</h2>
+                        <ul>
+                            <li>Building side projects</li>
+                            <li>Playing football and chess</li>
+                            <li>Reading novels sometines</li>
+                        </ul>
+                    </section>
+
+                    <section data-testid="test-user-dislikes">
+                        <h2>Dislikes</h2>
+                        <ul>
+                            <li>Poorly documented code</li>
+                            <li>Meeting overload</li>
+                            <li>Stress</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <script>
+        // Update time display
+        function updateTime() {
+            const timeElement = document.querySelector('[data-testid="test-user-time"]');
+            if (timeElement) {
+                timeElement.textContent = Date.now();
+            }
+        }
+
+        // Initialize time and update every second
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Ensure all links are keyboard accessible with visible focus
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    link.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
