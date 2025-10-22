@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Card - Stage 0</title>
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -37,6 +31,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -229,22 +224,29 @@
         }
     </style>
 </head>
+
 <body>
     <article data-testid="test-profile-card">
+        <nav class="display:flex; justify-content: flex-end; align-items:center; width: 100%;">
+            <div style="padding-top: 16px; background-color: #f7fafc;">
+                <nav class="breadcrumb">
+                    <a href="about/index.html"><i class="fas fa-home"></i> About</a>
+                    <a href="contact-me/index.html"><i class="fas fa-home"></i> Contact Me</a>
+                </nav>
+            </div>
+          </nav>
+          
         <div class="card-content">
             <aside class="avatar-section">
                 <figure>
-                    <img 
-                        data-testid="test-user-avatar" 
-                        src="https://www.davidtimi.tech/assets/profile-B-dEHddr.jpg" 
-                        alt="Profile picture of David Uwagbale"
-                    >
+                    <img data-testid="test-user-avatar" src="https://lh3.googleusercontent.com/ogw/AF2bZyh87YD-xYHdaFwy1gGRtqIjWnaWXr1AbJVxdpdhZAaqip4=s256-c-mo"
+                        alt="Profile picture of David Uwagbale">
                 </figure>
             </aside>
 
             <div class="info-section">
                 <header>
-                    <h1 data-testid="test-user-name">David  Uwagbale</h1>
+                    <h1 data-testid="test-user-name">David Uwagbale</h1>
                     <div class="time-display">
                         Current time: <span data-testid="test-user-time" aria-live="polite"></span>ms
                     </div>
@@ -253,46 +255,33 @@
                 <p data-testid="test-user-bio">
                     Heyy! I'm David Uwagbale popularly known as Dev_id, a Full-stack Developer.
 
-For over 3 years now, I have been obsessed making user-centered websites alongside dynamic and progressive web applications .
+                    For over 3 years now, I have been obsessed making user-centered websites alongside dynamic and
+                    progressive web applications .
 
-I'm pursuing a Bachelor's degree in Computer Science since I kinda enjoy writing programs. I also participate in hackathons, working with small teams to bring life to great ideas.
+                    I'm pursuing a Bachelor's degree in Computer Science since I kinda enjoy writing programs. I also
+                    participate in hackathons, working with small teams to bring life to great ideas.
 
-I quite like the idea of Fancy sophisticated-looking Statistics 😂
+                    I quite like the idea of Fancy sophisticated-looking Statistics 😂
                 </p>
 
                 <nav data-testid="test-user-social-links" aria-label="Social media links">
                     <h2>Connect with me</h2>
                     <ul>
                         <li>
-                            <a 
-                                href="https://twitter.com/davidtimi_1" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                data-testid="test-user-social-twitter"
-                                aria-label="Visit my Twitter profile"
-                            >
+                            <a href="https://twitter.com/davidtimi_1" target="_blank" rel="noopener noreferrer"
+                                data-testid="test-user-social-twitter" aria-label="Visit my Twitter profile">
                                 <span aria-hidden="true">🐦</span> Twitter
                             </a>
                         </li>
                         <li>
-                            <a 
-                                href="https://github.com/davidtimi1" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                data-testid="test-user-social-github"
-                                aria-label="Visit my GitHub profile"
-                            >
+                            <a href="https://github.com/davidtimi1" target="_blank" rel="noopener noreferrer"
+                                data-testid="test-user-social-github" aria-label="Visit my GitHub profile">
                                 <span aria-hidden="true">💻</span> GitHub
                             </a>
                         </li>
                         <li>
-                            <a 
-                                href="https://linkedin.com/in/daviduwagbale" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                data-testid="test-user-social-linkedin"
-                                aria-label="Visit my LinkedIn profile"
-                            >
+                            <a href="https://linkedin.com/in/daviduwagbale" target="_blank" rel="noopener noreferrer"
+                                data-testid="test-user-social-linkedin" aria-label="Visit my LinkedIn profile">
                                 <span aria-hidden="true">💼</span> LinkedIn
                             </a>
                         </li>
@@ -346,4 +335,5 @@ I quite like the idea of Fancy sophisticated-looking Statistics 😂
         });
     </script>
 </body>
+
 </html>
