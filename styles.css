@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --text-dark: #2d3748;
+    --text-medium: #4a5568;
+    --bg-light: #f7fafc;
+    --border: #e2e8f0;
+  }
+
+  body {
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--text-medium);
+    margin: 0;
+    padding: 40px 20px;
+  }
+  
+  h1, h2, h3, h4, h5, header {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+  }
+  
+  .breadcrumb {
+    margin-bottom: 24px;
+    font-size: 0.875rem;
+  }
